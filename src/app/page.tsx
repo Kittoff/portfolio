@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import Photo from "@/components/Photo";
 import Socials from "@/components/Socials";
+import Stats from "@/components/Stats";
 import { Button } from "@/components/ui/button";
 import { FiDownload } from "react-icons/fi";
 
@@ -9,7 +10,7 @@ export default function Home() {
     <section className="h-full">
       <div className="container mx-auto h-full">
         <div className="flex flex-col lg:flex-row items-center justify-between">
-          <div className="text-center xl:text-left">
+          <div className="text-center xl:text-left order-2 lg:order-none ">
             <span className="text-xl">Web Developer</span>
             <h1 className="h1 mb-6">
               Hello I'm <br />{" "}
@@ -36,11 +37,12 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="">
+          <div className="order-1 lg:order-none mb-8 xl:mb-0">
             <Photo />
           </div>
         </div>
       </div>
+      <Stats />
     </section>
   );
 }
