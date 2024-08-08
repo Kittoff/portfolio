@@ -3,14 +3,15 @@ import React from "react";
 import CountUp from "react-countup";
 
 const stats = [
-  { num: 12, text: "Years of Experience" },
+  { num: 5, text: "Years of Experience" },
   { num: 8, text: "Technologies mastered" },
+  { num: 12, text: "Years of Experience" },
   { num: 12, text: "Years of Experience" },
 ];
 
 const Stats = () => {
   return (
-    <section>
+    <section className="pt-12">
       <div className="container mx-auto">
         <div className="flex flex-wrap gap-6 max-w-[80vw] mx-auto xl:max-w-none">
           {stats.map((item, index) => {

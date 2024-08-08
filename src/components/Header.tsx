@@ -6,11 +6,11 @@ import MobileNav from "./MobileNav";
 
 const Header = () => {
   return (
-    <header className="py-8 lg:py-12 text-white">
+    <header className="py-8  text-white">
       <div className="container mx-auto">
         {/* Mobile layout */}
         <div className="flex items-center justify-between xl:hidden">
-          <div className="w-10">
+          <div className="w-12">
             {" "}
             {/* Placeholder to balance the layout */}
             {/* You can put a back button or other element here if needed */}
@@ -37,9 +37,6 @@ const Header = () => {
           </Link>
           <div className="flex items-center gap-8">
             <Nav />
-            <Link href="/contact">
-              <Button>Hire me</Button>
-            </Link>
           </div>
         </div>
       </div>

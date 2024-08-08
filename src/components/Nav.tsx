@@ -64,7 +64,7 @@ const SlideTabs = () => {
             onClick={() => setActiveTab(link.id)}
             isActive={activeTab === link.id}
           >
-            <div className="px-3 py-1.5 relative">
+            <div className="py-1.5 relative">
               <FlipLink href={link.path} isHovered={hoveredId === link.id}>
                 {link.name}
               </FlipLink>
@@ -120,7 +120,7 @@ const Tab = ({
         onMouseEnter();
       }}
       onClick={onClick}
-      className="relative z-10 block cursor-pointer px-3 py-1.5 text-xs text-white md:px-5 md:py-3 md:text-base"
+      className="relative z-10 block cursor-pointer py-1.5 text-xs text-white md:px-4 md:py-3 md:text-base"
     >
       {children}
     </li>

@@ -12,9 +12,9 @@ export default function Home() {
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <div className="text-center xl:text-left order-2 lg:order-none ">
             <span className="text-xl">Web Developer</span>
-            <h1 className="h1 mb-6">
-              Hello I'm <br />{" "}
-              <span className="text-accent">Christophe LOZANO</span>
+            <h1 className=" mb-6">
+              <span className="h1"> Hello I'm</span> <br />{" "}
+              <span className="text-accent h2">Christophe LOZANO</span>
             </h1>
             <p className="max-w-[500px] mb-9 text-white">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit
