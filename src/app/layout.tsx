@@ -3,6 +3,8 @@ import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import StairTransition from "@/components/StairTransition";
+import { AnimatePresence } from "framer-motion";
+import Preloader from "@/components/Preloader";
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
@@ -23,6 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={jetbrainsMono.variable}>
+        <Preloader />
         <Header />
         <StairTransition />
         <main>{children}</main>
