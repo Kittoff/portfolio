@@ -9,15 +9,15 @@ import Stats from "./Stats";
 const Hero = () => {
   return (
     <>
-      <div className="container mx-auto h-full">
-        <div className="flex flex-col lg:flex-row items-center justify-between">
+      <div className="container mx-auto h-full  2xl:h-[70vh] 2xl:flex 2xl:items-center">
+        <div className="flex flex-col lg:flex-row items-center justify-between 2xl:w-full">
           <div className="text-center xl:text-left order-2 lg:order-none ">
-            <span className="text-xl">Web Developer</span>
-            <h1 className=" mb-6">
+            <span className="text-xl 2xl:text-4xl">Web Developer</span>
+            <h1 className=" mb-6 2xl:mb-12">
               <span className="h1"> Hello I'm</span> <br />{" "}
               <span className="text-accent h2">Christophe LOZANO</span>
             </h1>
-            <p className="max-w-[500px] mb-9 text-white">
+            <p className="max-w-[500px] 2xl:text-xl mb-9 text-white">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit
               laboriosam ab architecto quaerat molestias!
             </p>
