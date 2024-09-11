@@ -1,91 +1,53 @@
 "use client";
-import { useScroll, useTransform, motion, useMotionValue } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useScroll } from "framer-motion";
+import Slide from "@/components/Slide";
+import SvgComponent from "./SvgComponent";
 
 const About = () => {
-  // Obtenir la progression du scroll
-  const { scrollYProgress } = useScroll();
-  // const path = useMotionValue(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<HTMLDivElement>(null);
 
-  // Transformer la progression du scroll pour animer le pathLength de 0 à 1
-  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
 
-  const [inView, setInView] = useState(false);
-  const ref = useRef(null);
+  const [speedFactor, setSpeedFactor] = useState(1);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      setInView(entry.isIntersecting);
-    });
+    const handleResize = () => {
+      setSpeedFactor(window.innerWidth < 768 ? 6 : 6);
+    };
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    window.addEventListener("resize", handleResize);
+    handleResize();
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      window.removeEventListener("resize", handleResize);
     };
-  }, [ref]);
+  }, []);
 
   return (
-    <div className="bg-green-900 h-[150vh]">
-      <svg
-        id="svg"
-        xmlns="http://www.w3.org/2000/svg"
-        className="max-w-[50%] mt-[60vh]"
-        viewBox="0 0 600 1200"
-      >
-        <path
-          className="line01 line fill-none stroke-white"
-          d="M 10 200  600 200"
-        ></path>
-        <path
-          ref={ref}
-          className="line02 line fill-none stroke-white "
-          d="M 10 400  600 400"
-        ></path>
-        <path
-          className="line03 line fill-none stroke-white"
-          d="M 10 600  600 600"
-        ></path>
-        <path
-          className="line04 line fill-none stroke-white"
-          d="M 10 800  600 800"
-        ></path>
-        <path
-          className="line05 line fill-none stroke-white"
-          d="M 10 1000  600 1000"
-        ></path>
-        <text className="text01" x="30" y="190">
-          2018
-        </text>
-        <text className="text02" x="30" y="390">
-          2019
-        </text>
-        <text className="text03" x="30" y="590">
-          2020
-        </text>
+    <div className="mx-auto overflow-hidden h-[300vh]">
+      <div className="uppercase text-[30vw] font-extrabold leading-[7rem] mt-40 md:leading-[15rem] md:text-[20vw]">
+        <div ref={containerRef}>
+          {["freelance", "creative", "developper"].map((text, index) => (
+            <Slide
+              key={text}
+              text={text}
+              directionType={index % 2 === 0 ? "right" : "left"}
+              left={index === 0 ? "10%" : index === 1 ? "-10%" : "20%"}
+              progress={scrollYProgress}
+              speedFactor={speedFactor * (index === 0 ? 2 : 1)}
+              translateDistance={100}
+            />
+          ))}
+        </div>
+      </div>
 
-        <motion.path
-          className="theLine"
-          d="M -5,0
-           Q 450 230 300 450 
-           T 130 750
-           Q 100 850 300 1000
-           T 150 1200"
-          fill="none"
-          stroke="white"
-          stroke-width="10px"
-          pathLength={inView ? pathLength : 0}
-        />
-
-        <circle className="ball ball01" r="20" cx="50" cy="100"></circle>
-        <circle className="ball ball02" r="20" cx="278" cy="301"></circle>
-        <circle className="ball ball03" r="20" cx="327" cy="501"></circle>
-        <circle className="ball ball04" r="20" cx="203" cy="701"></circle>
-      </svg>
+      <SvgComponent svgRef={svgRef} />
     </div>
   );
 };
